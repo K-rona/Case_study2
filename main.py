@@ -43,12 +43,21 @@ for i in range(1, page_numbers + 1):
                     break
             prices += int(item_card[price_index1:price_index2])
 
-for i in range(61):
-    index_article1 = front_page.find('src="//a.lmcdn.ru/img236x341/R/T/')
-    for j in range(index_article1 + 33, len(front_page)):
-        if front_page[j] == "_":
+for i in range(1, page_numbers + 1):
+
+    text = (requests.get(url_final + 'page=' + str(i))).text
+    index_article1 = text.find('src="//a.lmcdn.ru/img236x341/R/T/')
+    for j in range(index_article1 + 33, len(text)):
+        if text[j] == "_":
             index_article2 = j
             break
-    articles.append(str(front_page[index_article1 + 33:index_article2]))
+    articles.append(str(text[index_article1 + 33:index_article2]))
 
-print(articles)
+    begin = index_article2
+    for k in range(begin, len(text)):
+        index_begin = text[begin:].find('<a href="/p/')
+        for h in range(index_begin + 12, len(text)):
+            if text[h] == "/":
+                index_end = h
+        articles.append(str(text[index_begin + 12:index_end]))
+        begin = index_end
