@@ -38,4 +38,13 @@ for i in range(1, page_numbers + 1):
                     price_index2 = k
                     break
             prices += int(item_card[price_index1:price_index2])
-            
+
+for i in range(61):
+    index_article1 = front_page.find('src="//a.lmcdn.ru/img236x341/R/T/')
+    for j in range(index_article1 + 33, len(front_page)):
+        if front_page[j] == "_":
+            index_article2 = j
+            break
+    articles.append(str(front_page[index_article1 + 33:index_article2]))
+
+print(articles)
