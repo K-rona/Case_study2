@@ -38,4 +38,21 @@ for i in range(len(front_page)-12):
                 break
 
 
-print(articles)
+for i in articles:
+
+    url = 'https://www.lamoda.ru/p/' + i
+    text = (requests.get(url)).text
+    index_brands1 = text.find('Другие товары ') + 14
+    for j in range(index_brands1, len(text)):
+        if not text[j].isalpha():
+            index_brands2 = j
+            break
+
+    brands.append(str(text[index_brands1:index_brands2]))
+
+    index_names1 = text.find('<title>') + 7
+    for j in range(index_names1, len(text)):
+        if text[j] == ",":
+            index_names2 = j
+            break
+    names.append(str(text[index_names1:index_names2]))
