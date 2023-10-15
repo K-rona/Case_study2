@@ -3,7 +3,10 @@ import requests
 url_base1 = 'https://www.lamoda.ru/catalogsearch/result/?q='
 prompt = input()
 
-url_final = url_base1 + prompt
+url_final = url_base1 + prompt[0]
+if len(prompt) > 1:
+    for i in range (1,len(prompt)):
+        url_final = url_final + "%20" + prompt[i]
 
 r = requests.get(url_final)
 front_page = r.text
@@ -17,7 +20,7 @@ for i in range(index_begin + 53, len(front_page)):
         break
 
 quantity = int(front_page[index_begin + 53: index_end])
-page_numbers = quantity//60
+page_numbers = math.ceil(quantity/60)
 
 articles = []
 brands = []
