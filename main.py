@@ -29,7 +29,7 @@ prices = []
 manufacturers = []
 
 begining = front_page.find('<div class="x-product-card-description__microdata-wrap">')
-for k in range(60):
+for k in range(61):
     index_begin = front_page[begining:].find('class="x-product-card__card"><a href="/p/')
     for h in range(index_begin + 41, len(front_page)):
         if front_page[h] == "/":
