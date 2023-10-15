@@ -44,7 +44,7 @@ for i in articles:
     text = (requests.get(url)).text
     index_brands1 = text.find('Другие товары ') + 14
     for j in range(index_brands1, len(text)):
-        if not text[j].isalpha():
+        if text[j] == "\n":
             index_brands2 = j
             break
 
