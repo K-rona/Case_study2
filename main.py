@@ -23,3 +23,19 @@ articles = []
 brands = []
 prices = []
 manufacturers = []
+
+for i in range(1, page_numbers + 1):
+
+    text = (requests.get(url_final + 'page=' + str(i))).text
+    links = text.split('<div class="x-product-card-description__microdata-wrap">')
+
+    for j in range(1, len(links)):
+        item_card = links[j]
+        if item_card.find('class="x-product-card-description__price-new') == -1:
+            price_index1 = item_card.find('style="white-space: nowrap;">')
+            for k in range(price_index1 + 29, len(item_card)):
+                if not item_card[k].isdigit():
+                    price_index2 = k
+                    break
+            prices += int(item_card[price_index1:price_index2])
+            
