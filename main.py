@@ -26,7 +26,11 @@ page_numbers = math.ceil(quantity/60)
 articles = []
 brands = []
 prices = []
+sales = []
+summ_sales = []
 manufacturers = []
+names = []
+country = []
 
 for i in range(len(front_page)-12):
     if front_page[i: i + 12] == '<a href="/p/':
@@ -56,3 +60,26 @@ for i in articles:
             index_names2 = j
             break
     names.append(str(text[index_names1:index_names2]))
+
+    index_sales = text.find('"price":') + 8
+    index_sales_final = index_sales
+    while str(text[index_sales_final]) in "1234567890":
+        index_sales_final += 1
+    sales.append(text[index_sales:index_sales_final])
+
+    index_price = text.find('"price":', text.find('"price":') + 1) + 8
+    if text[index_price]=='"':
+        index_price += 1
+    index_price_final = index_price
+    while str(text[index_price_final]) in "1234567890 ":
+        index_price_final += 1
+    prices.append(text[index_price:index_price_final].replace(" ",""))
+    summ_sales.append(abs(int(prices[-1]) - int(sales[-1])))
+
+    index_country = text.find('Страна производства","value":"') + 30
+    index_country_final = index_country
+    while str(text[index_country_final]) != '"':
+        index_country_final+=1
+    country.append(text[index_country:index_country_final])
+
+print(country)
