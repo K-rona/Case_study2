@@ -2,7 +2,7 @@ import requests
 import math
 
 url_base1 = 'https://www.lamoda.ru/catalogsearch/result/?q='
-prompt = input()
+prompt = input().split()
 
 url_final = url_base1 + prompt[0]
 if len(prompt) > 1:
