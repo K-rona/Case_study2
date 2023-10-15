@@ -1,4 +1,5 @@
 import requests
+import math
 
 url_base1 = 'https://www.lamoda.ru/catalogsearch/result/?q='
 prompt = input()
