@@ -28,7 +28,6 @@ brands = []
 prices = []
 sales = []
 summ_sales = []
-manufacturers = []
 names = []
 country = []
 
