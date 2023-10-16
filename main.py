@@ -33,16 +33,19 @@ summ_sales = []
 names = []
 country = []
 
-for i in range(len(front_page)-12):
+for i in range(page_numbers + 1):
+    page = (requests.get('url_final + '&submit=y&gender_section=women&page=' + str(page))).text
     
-    if front_page[i: i + 12] == '<a href="/p/':
-        index_article1 = (i + 12)
-        for j in range(index_article1, len(front_page)):
+    for j in range(len(page)-12):
+    
+        if page[j: j + 12] == '<a href="/p/':
+            index_article1 = (j + 12)
+            for k in range(index_article1, len(page)):
             
-            if front_page[j] == "/":
-                index_article2 = j
-                articles.append(str(front_page[index_article1:index_article2].upper()))
-                break
+                if page[k] == "/":
+                    index_article2 = k
+                    articles.append(str(page[index_article1:index_article2].upper()))
+                    break
 
 
 for i in articles:
