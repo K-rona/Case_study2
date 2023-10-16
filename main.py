@@ -83,11 +83,11 @@ for i in articles:
 
 
 for i in range(len(prices)-1):
-    for j in range(i, len(prices)-1):
-        if prices[i] > prices[j]:
-            prices[j], prices[i] = prices[i], prices[j]
-            articles[j], articles[i] = articles[i], articles[j]
-            names[j], names[i] = names[i], names[j]
-            brands[j], brands[i] = brands[i], brands[j]
-            summ_sales[j], summ_sales[i] = summ_sales[i], summ_sales[j]
-            country[j], country[i] = country[i], country[j]
+    for j in range(len(prices) - i -1):
+        if int(prices[j]) < int(prices[j+1]):
+            prices[j], prices[j+1] = prices[j+1], prices[j]
+            articles[j], articles[j+1] = articles[j+1], articles[j]
+            names[j], names[j+1] = names[j+1], names[j]
+            brands[j], brands[j+1] = brands[j+1], brands[j]
+            summ_sales[j], summ_sales[j+1] = summ_sales[j+1], summ_sales[j]
+            country[j], country[j+1] = country[j+1], country[j]
