@@ -81,8 +81,13 @@ for i in articles:
         index_country_final+=1
     country.append(text[index_country:index_country_final])
 
+
 for i in range(len(prices)-1):
     for j in range(i, len(prices)-1):
         if prices[i] > prices[j]:
             prices[j], prices[i] = prices[i], prices[j]
-            
+            articles[j], articles[i] = articles[i], articles[j]
+            names[j], names[i] = names[i], names[j]
+            brands[j], brands[i] = brands[i], brands[j]
+            summ_sales[j], summ_sales[i] = summ_sales[i], summ_sales[j]
+            country[j], country[i] = country[i], country[j]
