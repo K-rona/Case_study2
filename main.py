@@ -6,7 +6,7 @@ prompt = input().split()
 
 url_final = url_base1 + prompt[0]
 if len(prompt) > 1:
-    for i in range (1,len(prompt)):
+    for i in range (1, len(prompt)):
         url_final = url_final + "%20" + prompt[i]
 
 r = requests.get(url_final)
@@ -67,7 +67,7 @@ for i in articles:
     sales.append(text[index_sales:index_sales_final])
 
     index_price = text.find('"price":', text.find('"price":') + 1) + 8
-    if text[index_price]=='"':
+    if text[index_price] == '"':
         index_price += 1
     index_price_final = index_price
     while str(text[index_price_final]) in "1234567890 ":
@@ -78,7 +78,7 @@ for i in articles:
     index_country = text.find('Страна производства","value":"') + 30
     index_country_final = index_country
     while str(text[index_country_final]) != '"':
-        index_country_final+=1
+        index_country_final += 1
     country.append(text[index_country:index_country_final])
 
 
