@@ -33,8 +33,8 @@ summ_sales = []
 names = []
 country = []
 
-for i in range(page_numbers + 1):
-    page = (requests.get('url_final + '&submit=y&gender_section=women&page=' + str(page))).text
+for i in range(1,page_numbers + 1):
+    page = (requests.get(url_final + '&page=' + str(i))).text
     
     for j in range(len(page)-12):
     
@@ -108,3 +108,10 @@ for i in range(len(prices)-1):
             brands[j], brands[j+1] = brands[j+1], brands[j]
             summ_sales[j], summ_sales[j+1] = summ_sales[j+1], summ_sales[j]
             country[j], country[j+1] = country[j+1], country[j]
+
+with open("table.txt","w+",encoding='utf-8') as file:
+    file.write("Id                  Price               Sale                Name                          Brand               Country               ")
+    for i in range(len(prices)):
+        string = articles[i] + " "*(20-len(articles[i])) + str(prices[i]) + " "*(20-len(str(prices[i]))) + str(summ_sales[i]) + " "*(20-len(str(summ_sales[i])))
+        string = string + names[i] + " "*(30-len(names[i])) + brands[i] + " "*(20-len(brands[i])) + country[i] + " "*(20-len(country[i])) + "\n"
+        file.write(string)
