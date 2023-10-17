@@ -1,3 +1,7 @@
+'''
+Аронова Александра - 58
+Якимова Антонина - 
+'''
 import requests
 import math
 
@@ -108,3 +112,12 @@ for i in range(len(prices)-1):
             brands[j], brands[j+1] = brands[j+1], brands[j]
             summ_sales[j], summ_sales[j+1] = summ_sales[j+1], summ_sales[j]
             country[j], country[j+1] = country[j+1], country[j]
+
+result = ''
+
+for i in range(len(prices)):
+    result += (str(prices[i]) + ' ' +  articles[i] + ' ' + names[i] + ' ' + brands[i] + ' ' + str(summ_sales[i]) + ' ' +  country[i] + '\n')
+
+with open('output.txt', 'w') as f_out:
+    f_out.write(result)
+
