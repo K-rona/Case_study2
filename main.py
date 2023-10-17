@@ -115,3 +115,5 @@ with open("table.txt","w+",encoding='utf-8') as file:
         string = articles[i] + " "*(20-len(articles[i])) + str(prices[i]) + " "*(20-len(str(prices[i]))) + str(summ_sales[i]) + " "*(20-len(str(summ_sales[i])))
         string = string + names[i] + " "*(30-len(names[i])) + brands[i] + " "*(20-len(brands[i])) + country[i] + " "*(20-len(country[i])) + "\n"
         file.write(string)
+
+print("0")
